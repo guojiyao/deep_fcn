@@ -42,7 +42,7 @@ with tf.Session() as sess:
     logging.info("Start Initializing Variabels.")
     print 'Loading the Network'
     logits = vgg_fcn.pred_up
-    softmax_loss = softmaxoutput_loss(logits, labels, 2) 
+    softmax_loss,f_p = softmaxoutput_loss(logits, labels, 2) 
     correct_pred = tf.equal(tf.argmax(logits,3), tf.argmax(labels,3))
     acc = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 

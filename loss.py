@@ -98,7 +98,7 @@ def softmaxoutput_loss(logits, labels, num_classes, head=None, weight = 1.0):
         labels = tf.to_float(tf.reshape(labels, (-1, num_classes)))
 
         softmax = tf.nn.softmax(logits)
-
+        false_p = (labels * softmax)
         if head is not None:
             cross_entropy = -tf.reduce_sum(tf.mul(labels * tf.log(softmax),
                                            head), reduction_indices=[1])
@@ -110,4 +110,4 @@ def softmaxoutput_loss(logits, labels, num_classes, head=None, weight = 1.0):
                                             name='xentropy_mean')
         tf.add_to_collection('losses', cross_entropy_mean)
 
-    return cross_entropy_mean
+    return cross_entropy_mean,false_p
