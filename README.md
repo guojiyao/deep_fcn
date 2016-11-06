@@ -5,19 +5,19 @@ Deconvolution Layers are initialized as bilinear upsampling. Conv and FCN layer 
 
 ## Usage
 
-use readimage.py for image storage.
-run train_pipeline.py for training process.
-change the checkpoint path in test.py and run it for testing
+use readimage.py for image storage.<br />
+run train_pipeline.py for training process.<br />
+change the checkpoint path in test.py and run it for testing<br />
 (there're already 200 pic in the test_data folder for reference)
 
 ## Requirement
 
-tensorflow 0.10
-keras
-skimage
-cv2
-numpy
-matplotlib
+tensorflow 0.10<br />
+keras<br />
+skimage<br />
+cv2<br />
+numpy<br />
+matplotlib<br />
 
 ## result
 ![figure_1](https://cloud.githubusercontent.com/assets/17188890/20035003/ce1be06e-a3a9-11e6-9157-23c03b3f3fe7.png)
