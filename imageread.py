@@ -36,7 +36,7 @@ def labelread(i):
         y_shape = 400
 
 
-        img = cv2.imread("/mnt/data/jiyao/masks/masks_img"+str(i+1)+".tif")
+        img = cv2.imread("data/masks/masks_img"+str(i+1)+".tif")
         img = cv2.resize(img,(400,400))
         img = one_hot(img)
 	img = np.stack([img])
@@ -50,7 +50,7 @@ def imageread(i):
         x_shape = 400
         y_shape = 400
 
-        img = skimage.io.imread("/mnt/data/jiyao/tiles/tiles_img"+str(i+1)+".tif")
+        img = skimage.io.imread("data/tiles/tiles_img"+str(i+1)+".tif")
         img = skimage.transform.resize(img,(x_shape,y_shape))
         #img = normalized(img)
 	img = np.stack([img])

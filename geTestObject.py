@@ -27,7 +27,7 @@ def creatTestObject():
         y_shape = 400
 	
 	for i in range(200):
-                img = skimage.io.imread("/mnt/data/jiyao/tiles/tiles_img"+str(i+1)+".tif")
+                img = skimage.io.imread("data/tiles/tiles_img"+str(i+1)+".tif")
                 img = skimage.transform.resize(img,(x_shape,y_shape))
                 img = normalized(img)
                 img = np.stack([img])
