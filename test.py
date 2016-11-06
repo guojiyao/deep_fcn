@@ -53,7 +53,7 @@ with tf.Session() as sess:
     init = tf.initialize_all_variables()
     sess.run(init)
 
-    saved_model = 'data/tf_model/0-crowd.ckpt-1000'
+    saved_model = 'data/tf_model/2-crowd.ckpt-16000'
     print 'loading model..............' + saved_model
     saver.restore(sess,saved_model)
     count = 0
@@ -65,6 +65,6 @@ with tf.Session() as sess:
         up = tf.nn.softmax(up)
         up = up.eval()[:,1]
         up = up.reshape((400,400))
-        up = up > 0.1
+        up = up > 0.5
         scp.misc.imsave('test_data/fcn8_'+str(count+1)+'.png', up)
         count += 1

@@ -1,5 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import skimage.io
+import skimage.transform
 import cv2
 import os
 
@@ -20,7 +22,7 @@ def normalized(rgb):
         return norm
 
 
-def one_hot_normalize(rgb):
+def one_hot(rgb):
         # return one hot vector of mask
         b=rgb[:,:,0]
         label = b/255.0
@@ -36,7 +38,7 @@ def labelread(i):
 
         img = cv2.imread("/mnt/data/jiyao/masks/masks_img"+str(i+1)+".tif")
         img = cv2.resize(img,(400,400))
-        img = one_hot_normalize(img)
+        img = one_hot(img)
 	img = np.stack([img])
         #img = np.transpose(img,[2,0,1])
         y = np_utils.to_categorical(img.flatten().astype(int), 2)
@@ -48,9 +50,9 @@ def imageread(i):
         x_shape = 400
         y_shape = 400
 
-        img = cv2.imread("/mnt/data/jiyao/tiles/tiles_img"+str(i+1)+".tif")
-        img = cv2.resize(img,(x_shape,y_shape))
-        img = normalized(img)
+        img = skimage.io.imread("/mnt/data/jiyao/tiles/tiles_img"+str(i+1)+".tif")
+        img = skimage.transform.resize(img,(x_shape,y_shape))
+        #img = normalized(img)
 	img = np.stack([img])
         #img = np.transpose(img,[2,0,1])
         return img
